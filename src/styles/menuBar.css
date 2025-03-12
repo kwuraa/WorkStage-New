@@ -1,0 +1,24 @@
+.menuBar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  height: 100%;
+  background-color: var(--dark-color-elements);
+  box-shadow: 8px 0px 10px rgba(0, 0, 0, 0.14), 3px 0px 14px rgba(0, 0, 0, 0.12),
+    5px 0px 5px rgba(0, 0, 0, 0.2);
+  align-items: flex-start;
+}
+.buttons {
+  display: flex;
+  width: 65px;
+  /* height: 100%; */
+  flex-direction: column;
+  justify-content: flex-start;
+  /* margin-left: 10px;
+  margin-top: 146px; */
+  /* gap: 45px; */
+}

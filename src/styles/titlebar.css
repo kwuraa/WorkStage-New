@@ -1,0 +1,72 @@
+:root {
+  /* Variáveis para cores de botões na title bar */
+  --topbtn-hover-bg: #272c36;
+  --topbtn-active-bg: #6d4f8c;
+}
+
+.topBar {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 25px;
+  background-color: #242424;
+  z-index: 4;
+}
+
+.topBar .titleBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.topBar .titleBarBtns {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  padding-right: 25px;
+}
+
+.titleBar .title {
+  margin: 5px 0 5px 10px;
+  width: 100%;
+  line-height: 30px;
+  -webkit-app-region: drag;
+}
+
+.titleBarBtns .topBtn {
+  width: 25px;
+  height: 25px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.titleBarBtns .topBtn:hover {
+  background-color: var(--topbtn-hover-bg);
+}
+
+.titleBarBtns .topBtn:active {
+  background-color: var(--topbtn-active-bg);
+}
+
+/* Ícones dos botões */
+.titleBarBtns .minimizeBtn {
+  background-image: url(../assets/minimize.svg);
+}
+
+.titleBarBtns .maximizeBtn {
+  background-image: url(../assets/maximize.svg);
+}
+
+.titleBarBtns .restoreBtn {
+  background-image: url(../assets/restore.svg);
+}
+
+.titleBarBtns .closeBtn {
+  background-image: url(../assets/close.svg);
+}
