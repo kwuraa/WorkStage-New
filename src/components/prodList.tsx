@@ -31,6 +31,7 @@ const ItemList: React.FC<ItemListProps> = ({ onSelectItem }) => {
               <span id="idProduto">{prod.id}</span>
               <span id="produto">{prod.nome}</span>
               <span id="dataCadastro">{prod.data_cadastro}</span>
+              <span id="status">{prod.status}</span>
             </li>
           ))}
         </div>

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { ipcRenderer } from "electron";
 import "../styles/titlebar.css";
+import Logo from "../assets/logo.svg";
 
 function TitleBar() {
   const minimizeBtnRef = useRef<HTMLButtonElement>(null);
@@ -67,6 +68,7 @@ function TitleBar() {
     <>
       <div className="topBar">
         <div className="titleBar">
+          <img src={Logo} className="logo" />
           <div className="title">WorkStages</div>
           <div className="titleBarBtns">
             <button
