@@ -1,5 +1,6 @@
 :root {
   /* Variáveis para cores de botões na title bar */
+  --topBar-color: #231f1e;
   --topbtn-hover-bg: #272c36;
   --topbtn-active-bg: #6d4f8c;
 }
@@ -8,9 +9,9 @@
   display: flex;
   flex-direction: row;
   width: 100vw;
-  height: 25px;
-  background-color: #242424;
-  z-index: 4;
+  height: 38px;
+  background-color: var(--topBar-color);
+  z-index: 5;
 }
 
 .topBar .titleBar {
@@ -27,10 +28,19 @@
   padding-right: 25px;
 }
 
+.titleBar .logo {
+  margin-bottom: 6px;
+  margin-left: 6px;
+  min-height: 35px;
+  min-width: 35px;
+}
+
 .titleBar .title {
   margin: 5px 0 5px 10px;
+  text-align: center;
   width: 100%;
   line-height: 30px;
+  font-size: 24px;
   -webkit-app-region: drag;
 }
 

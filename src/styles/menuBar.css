@@ -1,3 +1,13 @@
+:root {
+  /* Variáveis de cores */
+  --dark-background-color: #292929; /* Fundo geral escuro */
+  --dark-color-elements: #383838; /* Elementos escuros */
+  --topbar-color: #151515; /* Barra superior */
+  --light-background-color: #ffffff; /* Fundo claro */
+  --text-icons-color: #e2e1e4; /* Texto e ícones */
+  --hover-dark-purple: #805ea1; /* Cor de hover e destaques */
+}
+
 .menuBar {
   display: flex;
   flex-direction: column;
@@ -5,7 +15,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 3;
+  z-index: 1;
+  width: 80px;
   height: 100%;
   background-color: var(--dark-color-elements);
   box-shadow: 8px 0px 10px rgba(0, 0, 0, 0.14), 3px 0px 14px rgba(0, 0, 0, 0.12),
