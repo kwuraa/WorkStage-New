@@ -25,7 +25,6 @@
   font-size: 15pt;
   color: var(--text-icons-color);
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 a {
@@ -68,5 +67,3 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-
-
