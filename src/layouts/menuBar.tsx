@@ -1,12 +1,33 @@
 import React from "react";
 import "../styles/menuBar.css";
 
-const MenuBar: React.FC = () => {
+interface MenuBarProps {
+  open: boolean;
+  toggleMenuBar: () => void;
+}
+
+const MenuBar: React.FC<MenuBarProps> = ({ open, toggleMenuBar }) => {
+  const disableBtn = open ? "" : "disableBtn";
+
   return (
-    <div className="menuBar">
-      <button className="buttons">add</button>
-      <button className="buttons">recent</button>
-      <button className="buttons">trash</button>
+    <div className={`menuBar ${open ? "open" : "closed"}`}>
+      <div className="BtnContainer">
+        <button
+          className={`buttons ${open ? "icon-menu_close" : "icon-menu"}`}
+          onClick={toggleMenuBar}
+        >
+          <span className="label">Menu</span>
+        </button>
+        <button className={`buttons icon-add_circle ${disableBtn}`}>
+          <span className="label">Adicionar</span>
+        </button>
+        <button className={`buttons icon-history ${disableBtn}`}>
+          <span className="label">Recentes</span>
+        </button>
+        <button className={`buttons icon-trash ${disableBtn}`}>
+          <span className="label">Lixeira</span>
+        </button>
+      </div>
     </div>
   );
 };

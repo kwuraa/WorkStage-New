@@ -9,6 +9,11 @@ import MenuBar from "./layouts/menuBar";
 const App: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<Prod | null>(null);
+  const [open, setOpen] = useState<boolean>(false);
+
+  const toggleMenuBar = (): void => {
+    setOpen((prev) => !prev);
+  };
 
   const openModal = (item: Prod) => {
     setSelectedItem(item);
@@ -17,7 +22,7 @@ const App: React.FC = () => {
   return (
     <div className="mainApp">
       <TitleBar />
-      <MenuBar />
+      <MenuBar open={open} toggleMenuBar={toggleMenuBar} />
       <div className="contentArea">
         <ProdList onSelectItem={openModal} />
         <Modal
