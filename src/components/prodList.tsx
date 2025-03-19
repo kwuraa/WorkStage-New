@@ -4,9 +4,10 @@ import "../styles/prodList.css";
 
 interface ItemListProps {
   onSelectItem: (item: Prod) => void;
+  open: boolean;
 }
 
-const ItemList: React.FC<ItemListProps> = ({ onSelectItem }) => {
+const ItemList: React.FC<ItemListProps> = ({ onSelectItem, open }) => {
   const [prods, setprod] = useState<Prod[]>([]);
 
   useEffect(() => {
@@ -19,7 +20,7 @@ const ItemList: React.FC<ItemListProps> = ({ onSelectItem }) => {
   }, []);
 
   return (
-    <div className="contentProductList">
+    <div className={`contentProductList ${open ? "pushList" : ""}`}>
       <ul>
         <div className="contentItemList" id="contentItemList">
           {prods.map((prod) => (
@@ -28,10 +29,18 @@ const ItemList: React.FC<ItemListProps> = ({ onSelectItem }) => {
               key={prod.id}
               onClick={() => onSelectItem(prod)}
             >
-              <span id="idProduto">{prod.id}</span>
-              <span id="produto">{prod.nome}</span>
-              <span id="dataCadastro">{prod.data_cadastro}</span>
-              <span id="status">{prod.status}</span>
+              <span className="idproduct" id="idProduto">
+                {prod.id}
+              </span>
+              <span className="name" id="produto">
+                {prod.nome}
+              </span>
+              <span className="date" id="dataCadastro">
+                {prod.data_cadastro}
+              </span>
+              <span className="stats" id="status">
+                {prod.status}
+              </span>
             </li>
           ))}
         </div>

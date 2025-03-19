@@ -5,6 +5,7 @@ import Modal from "./components/modal";
 import { Prod } from "./services/api";
 import ProdList from "./components/prodList";
 import MenuBar from "./layouts/menuBar";
+import Header from "./layouts/header";
 
 const App: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -24,7 +25,8 @@ const App: React.FC = () => {
       <TitleBar />
       <MenuBar open={open} toggleMenuBar={toggleMenuBar} />
       <div className="contentArea">
-        <ProdList onSelectItem={openModal} />
+        <Header open={open} />
+        <ProdList open={open} onSelectItem={openModal} />
         <Modal
           isOpen={modalOpen}
           onClose={() => setModalOpen(false)}
