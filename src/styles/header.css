@@ -1,0 +1,21 @@
+.headerInfos {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  padding-left: 86px;
+  padding-right: 88px;
+  margin-top: 18px;
+  transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+.headerInfos span {
+  text-transform: uppercase;
+  font-size: 32px;
+}
+
+.headerInfos.pushHeader {
+  margin-left: 215px;
+  width: 87.5%;
+}
