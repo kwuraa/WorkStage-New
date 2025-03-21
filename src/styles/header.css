@@ -7,7 +7,7 @@
   padding-left: 86px;
   padding-right: 88px;
   margin-top: 18px;
-  transition: margin-left 0.3s ease, width 0.3s ease;
+  transition: margin 0.3s ease, width 0.3s ease;
 }
 
 .headerInfos span {
@@ -18,4 +18,8 @@
 .headerInfos.pushHeader {
   margin-left: 215px;
   width: 87.5%;
+}
+
+.headerInfos.downHeader {
+  margin-top: 89px;
 }

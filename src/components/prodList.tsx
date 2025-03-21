@@ -5,9 +5,14 @@ import "../styles/prodList.css";
 interface ItemListProps {
   onSelectItem: (item: Prod) => void;
   open: boolean;
+  openSearch: boolean;
 }
 
-const ItemList: React.FC<ItemListProps> = ({ onSelectItem, open }) => {
+const ItemList: React.FC<ItemListProps> = ({
+  onSelectItem,
+  open,
+  openSearch,
+}) => {
   const [prods, setprod] = useState<Prod[]>([]);
 
   useEffect(() => {
@@ -20,7 +25,11 @@ const ItemList: React.FC<ItemListProps> = ({ onSelectItem, open }) => {
   }, []);
 
   return (
-    <div className={`contentProductList ${open ? "pushList" : ""}`}>
+    <div
+      className={`contentProductList ${open ? "pushList" : ""} ${
+        openSearch ? "downList" : ""
+      }`}
+    >
       <ul>
         <div className="contentItemList" id="contentItemList">
           {prods.map((prod) => (

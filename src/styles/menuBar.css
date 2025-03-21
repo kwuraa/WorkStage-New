@@ -9,13 +9,12 @@
 }
 
 @font-face {
-  font-family: "menuBar";
-  src: url("../assets/fonts/menuBar.eot?pki9mx");
-  src: url("../assets/fonts/menuBar.eot?pki9mx#iefix")
-      format("embedded-opentype"),
-    url("../assets/fonts/menuBar.ttf?pki9mx") format("truetype"),
-    url("../assets/fonts/menuBar.woff?pki9mx") format("woff"),
-    url("../assets/fonts/menuBar.svg?pki9mx#menuBar") format("svg");
+  font-family: "Icons";
+  src: url("../assets/fonts/Icons.eot?xy5qj4");
+  src: url("../assets/fonts/Icons.eot?xy5qj4#iefix") format("embedded-opentype"),
+    url("../assets/fonts/Icons.ttf?xy5qj4") format("truetype"),
+    url("../assets/fonts/Icons.woff?xy5qj4") format("woff"),
+    url("../assets/fonts/Icons.svg?xy5qj4#Icons") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -24,7 +23,7 @@
 [class^="icon-"],
 [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: "menuBar" !important;
+  font-family: "Icons" !important;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -37,6 +36,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-search:before {
+  content: "\e905";
+  color: #e2e1e4;
+}
 .icon-add_circle:before {
   content: "\e900";
   color: #e2e1e4;
@@ -107,6 +110,7 @@
   pointer-events: none;
 }
 
+.icon-search:hover::before,
 .icon-add_circle:hover::before,
 .icon-history:hover::before,
 .icon-trash:hover::before,

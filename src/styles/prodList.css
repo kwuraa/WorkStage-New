@@ -39,12 +39,16 @@
   padding-right: 9px;
 
   flex-grow: 1;
-  transition: margin-left 0.3s ease, width 0.3s ease;
+  transition: margin 0.3s ease, width 0.3s ease;
 }
 
 .contentProductList.pushList {
   margin-left: 215px;
   width: 86.5%;
+}
+
+.contentProductList.downList {
+  margin-top: 69px;
 }
 
 .contentProductList::-webkit-scrollbar {

@@ -3,11 +3,16 @@ import "../styles/header.css";
 
 interface HeaderProps {
   open: boolean;
+  openSearch: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ open }) => {
+const Header: React.FC<HeaderProps> = ({ open, openSearch }) => {
   return (
-    <div className={`headerInfos ${open ? "pushHeader" : ""}`}>
+    <div
+      className={`headerInfos ${open ? "pushHeader" : ""} ${
+        openSearch ? "downHeader" : ""
+      }`}
+    >
       <span className="id">ID</span>
       <span className="produtos">Produtos</span>
       <span className="cadastro">Data de Cadastro</span>
