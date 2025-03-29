@@ -13,7 +13,7 @@ const App: React.FC = () => {
   const [selectedItem, setSelectedItem] = useState<Prod | null>(null);
   const [open, setOpen] = useState<boolean>(false);
   const [openSearch, setOpenSearch] = useState<boolean>(false);
-  const [query, setQuery] = useState("");
+  const [results, setResults] = useState<Prod[]>([]);
 
   const toggleMenuBar = (): void => {
     if (!open) {
@@ -25,7 +25,6 @@ const App: React.FC = () => {
   const toggleSearchBtn = (): void => {
     setOpen(false);
     setOpenSearch((prev) => {
-      if (prev) setQuery("");
       return !prev;
     });
   };
@@ -34,6 +33,7 @@ const App: React.FC = () => {
     setSelectedItem(item);
     setModalOpen(true);
   };
+
   return (
     <div className="mainApp">
       <TitleBar />
@@ -42,14 +42,14 @@ const App: React.FC = () => {
         <Search
           openSearch={openSearch}
           toggleSearchBtn={toggleSearchBtn}
-          query={query}
-          setQuery={setQuery}
+          setResults={setResults}
         />
         <Header open={open} openSearch={openSearch} />
         <ProdList
           open={open}
           openSearch={openSearch}
           onSelectItem={openModal}
+          results={results}
         />
         <Modal
           isOpen={modalOpen}
