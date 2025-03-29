@@ -19,13 +19,6 @@ WorkStage é um aplicativo desenvolvido com **React** e **Electron** para gerenc
 
 ```
 WorkStage/
-├── backend/
-│   ├── Config/             # Configurações do sistema
-│   ├── controllers/        # Lógica de controle e gerenciamento de dados
-│   ├── db/                 # Configuração do banco de dados
-│   ├── routes/             # Rotas da API
-│   ├─ app.js               # Arquivo principal da aplicação
-│   └─ package.json         # Dependências e scripts do backend
 ├── src/
 │   ├── components/         # Componentes React reutilizáveis
 │   ├── Layouts/            # Layouts da aplicação
