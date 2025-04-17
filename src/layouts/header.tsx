@@ -13,7 +13,7 @@ const Header: React.FC<HeaderProps> = ({ open, openSearch }) => {
         openSearch ? "downHeader" : ""
       }`}
     >
-      <span className="id">ID</span>
+      <span className="id">NF</span>
       <span className="produtos">Produtos</span>
       <span className="cadastro">Data de Cadastro</span>
       <span className="status">Status</span>

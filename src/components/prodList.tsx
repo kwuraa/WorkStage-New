@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { fetchProd, Prod } from "../services/api";
+import { io } from "socket.io-client";
 import "../styles/prodList.css";
+
+const socket = io("http://localhost:5000");
 
 interface ItemListProps {
   onSelectItem: (item: Prod) => void;
@@ -15,16 +18,25 @@ const ItemList: React.FC<ItemListProps> = ({
   openSearch,
   results,
 }) => {
-  const [prods, setProd] = useState<Prod[]>([]);
+  const [prods, setProds] = useState<Prod[]>([]);
 
   useEffect(() => {
-    if (!openSearch) {
-      const loadItems = async () => {
+    const loadItems = async () => {
+      if (!openSearch) {
         const data = await fetchProd();
-        setProd(data);
-      };
-      loadItems();
-    }
+        setProds(data);
+      }
+    };
+
+    loadItems();
+
+    socket.on("novo_produto", (novoProduto: Prod) => {
+      setProds((prevProds) => [novoProduto, ...prevProds]);
+    });
+
+    return () => {
+      socket.off("novo_produto");
+    };
   }, [openSearch]);
 
   const displayedProds = openSearch ? results : prods;
@@ -44,8 +56,15 @@ const ItemList: React.FC<ItemListProps> = ({
                 key={prod.id}
                 onClick={() => onSelectItem(prod)}
               >
-                <span className="idproduct" id="idProduto">
-                  {prod.id}
+                <span
+                  className="nf"
+                  id="temNF"
+                  style={{
+                    color: prod.tem_nf ? "green" : "red",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {prod.tem_nf ? "NF: ✔️" : "NF: ❌"}
                 </span>
                 <span className="name" id="produto">
                   {prod.nome}

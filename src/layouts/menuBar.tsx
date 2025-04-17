@@ -4,9 +4,14 @@ import "../styles/menuBar.css";
 interface MenuBarProps {
   open: boolean;
   toggleMenuBar: () => void;
+  openAddModal: () => void;
 }
 
-const MenuBar: React.FC<MenuBarProps> = ({ open, toggleMenuBar }) => {
+const MenuBar: React.FC<MenuBarProps> = ({
+  open,
+  toggleMenuBar,
+  openAddModal,
+}) => {
   const disableBtn = open ? "" : "disableBtn";
 
   return (
@@ -18,7 +23,10 @@ const MenuBar: React.FC<MenuBarProps> = ({ open, toggleMenuBar }) => {
         >
           <span className="label">Menu</span>
         </button>
-        <button className={`buttons icon-add_circle ${disableBtn}`}>
+        <button
+          className={`buttons icon-add_circle ${disableBtn}`}
+          onClick={openAddModal}
+        >
           <span className="label">Adicionar</span>
         </button>
         <button className={`buttons icon-history ${disableBtn}`}>

@@ -6,6 +6,7 @@ interface Product {
   nome: string;
   data_cadastro: string;
   status: string;
+  tem_nf: boolean;
 }
 interface SearchBarProps {
   openSearch: boolean;

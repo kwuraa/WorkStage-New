@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import "./styles/App.css";
 import TitleBar from "./layouts/titlebar";
 import Modal from "./components/modal";
-import { Prod } from "./services/api";
+import { Prod, addProd } from "./services/api";
 import ProdList from "./components/prodList";
 import MenuBar from "./layouts/menuBar";
 import Header from "./layouts/header";
 import Search from "./components/search";
+import AddItemModal from "./components/addModal";
+import { AxiosError } from "axios";
 
 const App: React.FC = () => {
+  const [addModalOpen, setAddModalOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<Prod | null>(null);
   const [open, setOpen] = useState<boolean>(false);
@@ -34,10 +37,42 @@ const App: React.FC = () => {
     setModalOpen(true);
   };
 
+  const openAddModal = () => {
+    setAddModalOpen(true);
+  };
+
+  const handleAddItem = async (
+    name: string,
+    processes: string[],
+    description: string,
+    tem_nf: boolean
+  ) => {
+    const NewProd = {
+      nome: name,
+      descricao: description,
+      tem_nf,
+      processos: processes.map((processo) => ({ nome: processo })),
+    };
+
+    try {
+      await addProd(NewProd);
+    } catch (error) {
+      const err = error as AxiosError;
+      console.error(
+        "❌ Erro ao adicionar item:",
+        err.response?.data || err.message
+      );
+    }
+  };
+
   return (
     <div className="mainApp">
       <TitleBar />
-      <MenuBar open={open} toggleMenuBar={toggleMenuBar} />
+      <MenuBar
+        open={open}
+        toggleMenuBar={toggleMenuBar}
+        openAddModal={openAddModal}
+      />
       <div className="contentArea">
         <Search
           openSearch={openSearch}
@@ -50,6 +85,11 @@ const App: React.FC = () => {
           openSearch={openSearch}
           onSelectItem={openModal}
           results={results}
+        />
+        <AddItemModal
+          isOpen={addModalOpen}
+          onClose={() => setAddModalOpen(false)}
+          onAdd={handleAddItem}
         />
         <Modal
           isOpen={modalOpen}
