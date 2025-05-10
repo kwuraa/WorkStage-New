@@ -21,6 +21,8 @@ const AddItemModal: React.FC<AddItemModalProps> = ({
   const [processos, setProcesses] = useState<string[]>([]);
   const [description, setDescription] = useState("");
   const [hasNF, setHasNF] = useState(false);
+  const { isActive, setIsActive } = useState(false);
+  const [value, setValue] = useState("");
 
   if (!isOpen) return null;
 
@@ -44,19 +46,31 @@ const AddItemModal: React.FC<AddItemModalProps> = ({
     onClose();
   };
 
+  function handleTextChange(text) {
+    setValue(text);
+
+    if (text !== "") {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
+  }
+
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <h2>Adicionar novo Produto</h2>
         <form onSubmit={handleSubmit}>
-          <label>
-            Nome:
+          <div className="float-label">
+            {" "}
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-          </label>
+            <label htmlFor="name" className={isActive ? "active" : ""}>
+              Name
+            </label>
+          </div>
 
           <label>
             <input
@@ -64,7 +78,7 @@ const AddItemModal: React.FC<AddItemModalProps> = ({
               checked={hasNF}
               onChange={(e) => setHasNF(e.target.checked)}
             />
-            Possui Nota Fiscal?
+            NF
           </label>
 
           <div className="process-section">
